@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Print Medical Report{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+    <form method="POST" action="{% url 'print_medical_report' %}">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Select Medical Report</label>
+            </div>
+            <select class="custom-select" name="all_medical_reports">
+                {% for i in medical_reports %}
+                <option  value="{{i.pk}}">{{i.date}}, {{i.doctor.full_name}}, {{i.patient.full_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <a href="/doctor_menu" class="btn btn-dark" role="button">Go back to the Main Menu</a>
+        <button type="submit" class="btn btn-danger">Export to PDF</button><br>
+    </form>
+    </div>
+{% endblock %}

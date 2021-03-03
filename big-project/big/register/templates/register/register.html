@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block title %}Create an account{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <label>Full Name*</label>
+        <input type="text" class="form-control" name="full_name" required><br>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Register as a</label>
+            </div>
+            <select class="custom-select" name="regSelect">
+                <option selected>Choose...</option>
+                <option name="regD">Doctor</option>
+                <option name="regN">Nurse</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+{% endblock %}

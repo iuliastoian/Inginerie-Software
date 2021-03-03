@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Guest Menu{% endblock %}
+
+{% block content %}
+    <img src="{% static 'images/2.jpg' %}" width="800">
+    <a href="/guest_appointments" class="btn btn-dark btn-lg btn-block" role="button">View Appointments</a>
+{% endblock %}

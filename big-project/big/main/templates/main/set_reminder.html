@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Set Reminder{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+    <form method="POST" action="{% url 'set_reminder' %}">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Select Patient</label>
+            </div>
+            <select class="custom-select" name="patient">
+                {% for i in patients %}
+                <option  value="{{i.pk}}">{{i.full_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="form-control btn-success">Send Reminder Email</button><br>
+    </form>
+    <a href="/nurse_menu" class="btn btn-dark" role="button">Go back to the Main Menu</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Appointment Scheduler{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+    <form method="POST" action="{% url 'schedule_appointment' %}">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <label>Date</label>
+        <input type="text" name="date" placeholder="dd/mm/yyyy" required="" class="form-control"><br>
+        <label>Time</label>
+        <input type="text" name="time" placeholder="hh:mm (am/pm)" required="" class="form-control"><br>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect02">Select Patient</label>
+            </div>
+            <select class="custom-select" name="patient">
+                {% for i in patient_names %}
+                <option  value="{{i.pk}}">{{i.full_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect03">Select Doctor</label>
+            </div>
+            <select class="custom-select" name="doctor">
+                {% for i in doctor_names %}
+                <option  value="{{i.pk}}">{{i.full_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="form-control btn-success">Submit</button><br>
+    </form>
+    <a href="/nurse_menu" class="btn btn-dark" role="button">Go back to the Main Menu</a>
+    </div>
+{% endblock %}

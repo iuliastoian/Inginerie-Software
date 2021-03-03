@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Doctor Menu{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <a href="/create_medical_report" class="btn btn-dark btn-lg btn-block" role="button">Create Medical Report</a>
+    <a href="/print_medical_report" class="btn btn-dark btn-lg btn-block" role="button">Print Medical Report</a>
+    <a href="/view_patients0" class="btn btn-dark btn-lg btn-block" role="button">View Pacients</a>
+    <a href="/view_appointments0" class="btn btn-dark btn-lg btn-block" role="button">View Appointments</a>
+{% endblock %}

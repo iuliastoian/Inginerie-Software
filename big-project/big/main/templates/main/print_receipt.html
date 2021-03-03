@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Print Receipt{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+    <form method="POST" action="{% url 'print_receipt' %}">
+        {% csrf_token %}
+        {{form|crispy}}
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Select Receipt</label>
+            </div>
+            <select class="custom-select" name="all_receipts">
+                {% for i in receipts %}
+                <option  value="{{i.pk}}">{{i.date}}, {{i.time}}, {{i.doctor.full_name}}, {{i.patient.full_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <a href="/nurse_menu" class="btn btn-dark" role="button">Go back to the Main Menu</a>
+        <button type="submit" class="btn btn-danger">Export to PDF</button><br>
+    </form>
+    </div>
+{% endblock %}

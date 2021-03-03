@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Nurse Menu{% endblock %}
+
+{% block content %}
+    <a href="/add_patient" class="btn btn-dark btn-lg btn-block" role="button">Add New Patient</a>
+    <a href="/schedule_appointment" class="btn btn-dark btn-lg btn-block" role="button">Schedule Appointment</a>
+    <a href="/set_reminder" class="btn btn-dark btn-lg btn-block" role="button">Set Reminder</a>
+    <a href="/create_receipt" class="btn btn-dark btn-lg btn-block" role="button">Create Receipt</a>
+    <a href="/print_receipt" class="btn btn-dark btn-lg btn-block" role="button">Print Receipt</a>
+    <a href="/view_patients" class="btn btn-dark btn-lg btn-block" role="button">View Pacients</a>
+    <a href="/view_appointments" class="btn btn-dark btn-lg btn-block" role="button">View Appointments</a>
+{% endblock %}
